@@ -95,4 +95,16 @@ public class Exposer {
     public void setNow(long now) {
         this.now = now;
     }
+
+    @Override
+    public String toString() {
+        return "Exposer{" +
+                "exposed=" + exposed +
+                ", md5='" + md5 + '\'' +
+                ", seckillId=" + seckillId +
+                ", start=" + start +
+                ", end=" + end +
+                ", now=" + now +
+                '}';
+    }
 }
