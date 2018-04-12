@@ -38,7 +38,9 @@ public class SeckillServiceImpl implements SeckillService {
     @Autowired
     private SuccessKilledDao successKilledDao;
 
-    //md5盐值字符串,用于混淆md5
+    /**
+     * md5盐值字符串,用于混淆md5
+     */
     private final String slat = "aa23tr23sdg^&SD!@#G2341!#@$32wedfSADF";
 
     public List<Seckill> getSeckillList() {
@@ -62,8 +64,9 @@ public class SeckillServiceImpl implements SeckillService {
             return new Exposer(false, seckillId, nowTime.getTime(),
                     startTime.getTime(), endTime.getTime());
         }
-        //转换特定字符串的过程,不可逆
-        String md5 = getMD5(seckillId); //TODO
+
+        // 转换特定字符串的过程,不可逆
+        String md5 = getMD5(seckillId);
         return new Exposer(true,md5,seckillId);
     }
 
@@ -73,7 +76,7 @@ public class SeckillServiceImpl implements SeckillService {
         return md5;
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     /**
      * 使用注解控制事务的方法的优点:
      * 1:开发团队达成一致约定,明确标注事务方法的编程风格
