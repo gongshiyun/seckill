@@ -22,8 +22,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by gongshiyun
- * Date: 2018/4/9
+ * @author gongshiyun
+ * @date 2018/4/9
  * Time: 23:48
  * Description:
  */
@@ -72,17 +72,17 @@ public class SeckillServiceImpl implements SeckillService {
 
     private String getMD5(long seckillId){
         String base = seckillId + "/" + slat;
-        String md5 = DigestUtils.md5DigestAsHex(base.getBytes());
-        return md5;
+        return DigestUtils.md5DigestAsHex(base.getBytes());
     }
 
-    @Transactional(rollbackFor = Exception.class)
+
     /**
      * 使用注解控制事务的方法的优点:
      * 1:开发团队达成一致约定,明确标注事务方法的编程风格
      * 2:保证事务方法的执行时间尽可能短,不要穿插其他的网络操作:RPC/HTTP请求或者剥离到事务方法外
      * 3:不是所有的方法都需要事务,如只有一条修改操作,只读操作不需要事务控制
      */
+    @Transactional(rollbackFor = Exception.class)
     public SeckillExecution executeSeckill(long seckillId, long userPhone, String md5) throws SeckillException, RepeatKillException, SeckillCloseException {
         if (md5 == null || !md5.equals(getMD5(seckillId))) {
             throw new SeckillException("seckill data rewrite");

@@ -4,21 +4,31 @@ import org.seckill.entity.SuccessKilled;
 import org.seckill.enums.SeckillStateEnum;
 
 /**
- * Created by gongshiyun
- * Date: 2018/4/9
+ * @author gongshiyun
+ * @date 2018/4/9
  * Time: 23:36
  * Description: 封装秒杀执行结果
  */
 public class SeckillExecution {
+
+    /**
+     * 秒杀对象id
+     */
     private long seckillId;
 
-    //秒杀执行结果
+    /**
+     * 秒杀执行结果
+     */
     private int state;
 
-    //状态表示
+    /**
+     * 状态表示
+     */
     private String stateInfo;
 
-    //秒杀成功对象
+    /**
+     * 秒杀成功对象
+     */
     private SuccessKilled successKilled;
 
     public SeckillExecution(long seckillId, SeckillStateEnum stateEnum, SuccessKilled successKilled) {

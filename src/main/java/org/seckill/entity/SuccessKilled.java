@@ -2,6 +2,11 @@ package org.seckill.entity;
 
 import java.util.Date;
 
+/**
+ * @author gongshiyun
+ * @date 2018/4/9
+ * Description: 秒杀成功对象
+ */
 public class SuccessKilled {
     private long seckillId;
 

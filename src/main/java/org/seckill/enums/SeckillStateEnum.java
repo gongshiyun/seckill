@@ -3,8 +3,8 @@ package org.seckill.enums;
 import org.seckill.entity.Seckill;
 
 /**
- * Created by gongshiyun
- * Date: 2018/4/10
+ * @author gongshiyun
+ * @date 2018/4/9
  * Time: 22:36
  * Description: 使用枚举表示常量数据字典
  */

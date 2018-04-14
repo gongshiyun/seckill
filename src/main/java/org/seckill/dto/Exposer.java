@@ -1,28 +1,40 @@
 package org.seckill.dto;
 
 /**
- * Created by gongshiyun
- * Date: 2018/4/9
+ * @author gongshiyun
+ * @date 2018/4/9
  * Time: 23:30
  * Description:暴露秒杀地址DTO
  */
 public class Exposer {
-    //是否开启秒杀
+    /**
+     * 是否开启秒杀
+     */
     private boolean exposed;
 
-    //一种加密措施
+    /**
+     * 一种加密措施
+     */
     private String md5;
 
-    //秒杀对象id
+    /**
+     * 秒杀对象id
+     */
     private long seckillId;
 
-    //开启时间
+    /**
+     * 开启时间
+     */
     private long start;
 
-    //结束时间
+    /**
+     * 结束时间
+     */
     private long end;
 
-    //系统时间(毫秒)
+    /**
+     * 系统时间(毫秒)
+     */
     private long now;
 
     public Exposer(boolean exposed, String md5, long seckillId) {
