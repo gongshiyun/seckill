@@ -37,7 +37,7 @@ public class Seckill {
     /**
      * 创建时间
      */
-    private Date createDate;
+    private Date createTime;
 
     public long getSeckillId() {
         return seckillId;
@@ -79,12 +79,12 @@ public class Seckill {
         this.endTime = endTime;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     @Override
@@ -95,7 +95,7 @@ public class Seckill {
                 ", number=" + number +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
-                ", createDate=" + createDate +
+                ", createTime=" + createTime +
                 '}';
     }
 }
