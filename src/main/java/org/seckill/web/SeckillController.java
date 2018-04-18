@@ -132,8 +132,10 @@ public class SeckillController {
      * @return
      */
     @RequestMapping(value = "/time/now",method = RequestMethod.GET)
+    @ResponseBody
     public SeckillResult<Long> time(){
         Date now = new Date();
+        logger.info("Now time is:${now}",now);
         return new SeckillResult(true,now.getTime());
     }
 }

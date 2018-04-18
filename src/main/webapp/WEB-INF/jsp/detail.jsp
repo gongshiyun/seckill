@@ -12,10 +12,10 @@
             <div class="panel-heading">
                 <h1>${seckill.name}</h1>
             </div>
-            <div>
+            <div class="panel-body">
                 <h2 class="text-danger">
                     <%--显示time图标--%>
-                    <span class="glyphicon-time"></span>
+                    <span class="glyphicon glyphicon-time"></span>
                     <%--展示倒计时--%>
                     <span class="glyphicon" id="seckill-box"></span>
                 </h2>
@@ -54,17 +54,16 @@
 <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<%--使用CDN获取公共js http://www.bootcdn.cn/--%>
-<%--JQuery cookie操作插件--%>
-<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-<%--JQuery countDown倒计时插件--%>
-<script src="https://cdn.bootcss.com/jquery-countdown/2.0.2/jquery.countdown.min.js"></script>
+<%--jQuery Cookie操作插件--%>
+<script src="http://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
 <%--开始编写交互逻辑--%>
 <script src="/resources/script/seckill.js" type="text/javascript"></script>
 
 
 <script type="text/javascript">
     $(function(){
+        console.log("aaaa");
         //使用EL表达式传入参数
         seckill.detail.init({
             startTime : ${seckill.startTime.time}, //毫秒

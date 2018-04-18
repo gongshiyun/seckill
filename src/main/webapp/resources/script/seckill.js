@@ -3,7 +3,9 @@
 var seckill = {
     //封装秒杀相关ajax的url
     URL : {
-
+        now : function () {
+            return '/seckill/time/now';
+        }
     },
     //验证手机号
     validatePhone : function(phone){
@@ -11,6 +13,32 @@ var seckill = {
             return true;
         } else {
             return false;
+        }
+    },
+    //处理秒杀逻辑
+    handleSeckill : function(){
+
+    },
+    countDown : function(seckillId,nowTime,startTime,endTime){
+        console.log(seckillId + '_' + nowTime + '_' + startTime + '_' + endTime);
+        var seckillBox = $('#seckill-box');
+        //时间判断
+        if (nowTime > endTime) {
+            //秒杀结束
+            seckillBox.html('秒杀结束');
+        } else if (nowTime < startTime){
+            //秒杀未开始，计时
+            var killTime = new Date(startTime + 1000);
+            seckillBox.countdown(killTime,function (event) {
+                var format = event.strftime('秒杀倒计时: %D天 %H时 %M分 %S秒');
+                seckillBox.html(format);
+            }).on('finish.countdown',function () {
+                //获取秒杀地址，控制现实逻辑，执行秒杀
+                seckill.handleSeckill(seckillId);
+            });
+        } else {
+            //秒杀开始
+            seckill.handleSeckill();
         }
     },
     //详情页秒杀逻辑
@@ -21,9 +49,6 @@ var seckill = {
             //规划交互流程
             //在cookie中查找手机号
             var killPhone = $.cookie('killPhone');
-            var startTime = params['startTime'];
-            var endTime = params['endTime'];
-            var seckillId = params['seckillId'];
             //验证手机号
             if (!seckill.validatePhone(killPhone)){
                 //绑定phone
@@ -44,8 +69,22 @@ var seckill = {
                     } else {
                         $("#killPhoneMessage").hide().html("<label class='label label-danger'>手机号错误</label>").show(300);
                     }
-                })
+                });
             }
+            //已经登陆
+            //计时交互
+            var startTime = params['startTime'];
+            var endTime = params['endTime'];
+            var seckillId = params['seckillId'];
+            $.get(seckill.URL.now(),{},function (result) {
+                if (result && result['success']){
+                    var nowTime = result['data'];
+                    //时间判断，计时交互
+                    seckill.countDown(seckillId,nowTime,startTime,endTime);
+                } else {
+                    console.log('result:' + result);
+                }
+            })
         }
     }
 };
