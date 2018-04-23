@@ -63,7 +63,6 @@
 
 <script type="text/javascript">
     $(function(){
-        console.log("aaaa");
         //使用EL表达式传入参数
         seckill.detail.init({
             startTime : ${seckill.startTime.time}, //毫秒
