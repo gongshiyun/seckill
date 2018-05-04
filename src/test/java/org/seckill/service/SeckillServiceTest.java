@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.seckill.dto.Exposer;
 import org.seckill.dto.SeckillExecution;
 import org.seckill.entity.Seckill;
+import org.seckill.entity.SuccessKilled;
 import org.seckill.exception.RepeatKillException;
 import org.seckill.exception.SeckillCloseException;
 import org.seckill.exception.SeckillException;
@@ -92,6 +93,18 @@ public class SeckillServiceTest {
             }
         } else {
             logger.warn("exposer={}",exposer);
+        }
+    }
+
+    @Test
+    public void seckillProcedureTest(){
+        long seckillId = 1003;
+        long phone = 12312312312L;
+        Exposer exposer = seckillService.exportSeckillUrl(seckillId);
+        if (exposer.isExposed()){
+            String md5 = exposer.getMd5();
+            SeckillExecution seckillExecution = seckillService.executeSeckillProcedure(seckillId,phone,md5);
+            logger.info(seckillExecution.getStateInfo());
         }
     }
 }
